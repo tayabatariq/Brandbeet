@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinite Scroll Rotation</title>
+  <style>
+    body {
+      height: 100vh; 
+      /* display: flex; */
+      /* justify-content: center; */
+      /* align-items: center; */
+    }
+
+    .rotateDiv {
+      width: 150px;
+      height: 150px;
+      background-color: #3498db;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+    }
+    header{
+    height: 100vh;
+    width: 100%;
+    background-color: red;
+}
+  </style>
+</head>
+<body>
+<header></header>
+  <div class="rotateDiv">Rotate Me</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    let rotationValue = 0; // Initial rotation value
+
+    ScrollTrigger.create({
+      trigger: ".rotateDiv",   // The element you want to rotate
+      start: "10% 20%",     // Adjust based on when you want the rotation to start
+      end: "100% 50%",       // Adjust based on when you want the rotation to end
+      scrub: true,             // Sync rotation with scroll
+      markers: true,
+      onUpdate: (self) => {
+        const velocity = self.getVelocity(); // Get the scroll velocity
+
+        // Adjust rotation based on scroll direction and speed
+        rotationValue += velocity * 0.02; // Adjust the multiplier to control rotation speed
+        gsap.to(".rotateDiv", {
+          rotation: rotationValue,
+          overwrite: true // Ensure it keeps updating the rotation
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+@import  "colors";
+@import  "fonts";
+@import  "header";
+@import  "section";
+@import  "article";
+@import  "aside";
+@import  "main";
+@import  "footer";
+@import  "part";
+
+@import  "part2";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}body{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+
+}
+
+#main{
+    position: relative;
+    background-color:#fff;
+
+
+}
+
+%displayfles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
